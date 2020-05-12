@@ -13,13 +13,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator'
 
 import Icon from '@/assets/2.svg'
 
-import UIButton from '@/components/UI/Button'
-import UIInput from '@/components/UI/Input'
+import UIButton from '@/components/UI/Button.vue'
+import UIInput from '@/components/UI/Input.vue'
 import NavigationMixin from '@/components/mixins/navigation'
 
 @Component({

@@ -18,7 +18,7 @@
 import { Component, Mixins } from 'vue-property-decorator'
 
 import NavigationMixin from '@/components/mixins/navigation'
-import UIButton from '@/components/UI/Button'
+import UIButton from '@/components/UI/Button.vue'
 
 import icon from '@/assets/1.svg'
 
