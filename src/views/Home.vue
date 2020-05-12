@@ -5,7 +5,7 @@
       <span class="description small">Богатый выбор еды от простой домашней кухни до изысков итальянской, все зависит только от вашего настроения</span>
       <div class="home_block-actions">
         <UI-Button class="first_button" label="Заказать"/>
-        <UI-Button label="Стать поваром" type="plain"/>
+        <UI-Button @click="$goToPage('signup')" label="Стать поваром" type="plain"/>
       </div>
     </div>
     <div class="home_block-right">
@@ -15,8 +15,9 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 
+import NavigationMixin from '@/components/mixins/navigation'
 import UIButton from '@/components/UI/Button'
 
 import icon from '@/assets/1.svg'
@@ -27,7 +28,7 @@ import icon from '@/assets/1.svg'
     UIButton
   }
 })
-export default class Home extends Vue {}
+export default class Home extends Mixins(NavigationMixin) {}
 </script>
 
 <style lang="scss" scoped>

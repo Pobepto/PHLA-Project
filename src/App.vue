@@ -1,23 +1,27 @@
 <template>
   <div id="app">
     <header class="header_block">
-      <span class="header_block-logo">InnoFood</span>
+      <span @click="$goToPage('Home')" class="header_block-logo">InnoFood</span>
       <div class="header_block-menu">
         <span class="header_block-menu-item">О нас</span>
         <span class="header_block-menu-item">Доставка</span>
         <span class="header_block-menu-item">FAQ</span>
       </div>
       <UI-Button
+        @click="$goToPage('signin')"
         type="plain"
         label="Войти"
       />
+
     </header>
     <router-view />
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
+
+import NavigationMixin from '@/components/mixins/navigation'
 import { lazyComponent } from '@/router'
 
 @Component({
@@ -25,7 +29,7 @@ import { lazyComponent } from '@/router'
     UIButton: lazyComponent('UI/Button')
   }
 })
-export default class App extends Vue {}
+export default class App extends Mixins(NavigationMixin) {}
 </script>
 
 <style lang="scss">
@@ -60,6 +64,7 @@ html {
     font-size: 2rem;
     text-transform: uppercase;
     font-weight: 800;
+    cursor: pointer;
   }
   .header_block-menu {
     display: flex;

@@ -5,7 +5,7 @@
       <UI-Input class="sign_block-wrapper" placeholder="Имя"/>
       <UI-Input class="sign_block-wrapper" placeholder="E-mail"/>
       <UI-Button class="sign_block-wrapper" label="Войти"/>
-      <UI-Button class="small-button" label="Зарегистрироваться" type="plain"/>
+      <UI-Button @click="$goToPage('signup')" class="small-button" label="Зарегистрироваться" type="plain"/>
     </div>
     <div class="sign_block-right">
       <Icon class="sign_block-right-icon" />
@@ -14,12 +14,13 @@
 </template>
 
 <script>
-import { Vue, Component } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 
 import Icon from '@/assets/2.svg'
 
 import UIButton from '@/components/UI/Button'
 import UIInput from '@/components/UI/Input'
+import NavigationMixin from '@/components/mixins/navigation'
 
 @Component({
   components: {
@@ -28,7 +29,7 @@ import UIInput from '@/components/UI/Input'
     UIInput
   }
 })
-export default class SignIn extends Vue {}
+export default class SignIn extends Mixins(NavigationMixin) {}
 </script>
 
 <style lang="scss">
