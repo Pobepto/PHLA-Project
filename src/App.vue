@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <header class="header_block">
-      <span @click="$goToPage('Home')" class="header_block-logo">InnoFood</span>
+      <span
+        class="header_block-logo"
+        @click="$goToPage('Home')"
+      >InnoFood</span>
       <div class="header_block-menu">
         <span class="header_block-menu-item">О нас</span>
         <span class="header_block-menu-item">Доставка</span>
         <span class="header_block-menu-item">FAQ</span>
       </div>
       <UI-Button
-        @click="$goToPage('signin')"
         type="plain"
         label="Войти"
+        @click="$goToPage('signin')"
       />
-
     </header>
     <router-view />
   </div>
@@ -23,13 +25,20 @@ import { Component, Mixins } from 'vue-property-decorator'
 
 import NavigationMixin from '@/components/mixins/navigation'
 import { lazyComponent } from '@/router'
+import { Action } from 'vuex-class'
 
 @Component({
   components: {
     UIButton: lazyComponent('UI/Button')
   }
 })
-export default class App extends Mixins(NavigationMixin) {}
+export default class App extends Mixins(NavigationMixin) {
+  @Action loadToken
+
+  created () {
+    this.loadToken()
+  }
+}
 </script>
 
 <style lang="scss">

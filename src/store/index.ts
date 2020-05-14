@@ -1,15 +1,14 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+/**
+ * The file enables `@/store/index.ts` to import all vuex modules
+ * in a one-shot manner. There should not be any reason to edit this file.
+ */
 
-Vue.use(Vuex)
+const files = require.context('.', false, /\.ts$/)
+const modules = {}
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+files.keys().forEach(key => {
+  if (key === './index.ts') return
+  modules[key.replace(/(\.\/|\.ts)/g, '')] = files(key).default
 })
+
+export default modules

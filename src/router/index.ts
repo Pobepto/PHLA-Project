@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import SignUp from '../views/SignUp.vue'
 import SignIn from '../views/SignIn.vue'
+import Profile from '../views/Profile.vue'
 
 export const lazyComponent = (name: string) => () => import(`@/components/${name}.vue`)
   .then(m => m.default)
@@ -24,6 +25,11 @@ const routes: Array<RouteConfig> = [
     path: '/signin',
     name: 'signin',
     component: SignIn
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile
   }
 ]
 

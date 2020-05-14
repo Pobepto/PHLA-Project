@@ -4,8 +4,15 @@
       <span class="description">Быстрая доставка еды от <span class="purple">лучших поваров</span></span>
       <span class="description small">Богатый выбор еды от простой домашней кухни до изысков итальянской, все зависит только от вашего настроения</span>
       <div class="home_block-actions">
-        <UI-Button class="first_button" label="Заказать"/>
-        <UI-Button @click="$goToPage('signup')" label="Стать поваром" type="plain"/>
+        <UI-Button
+          class="first_button"
+          label="Заказать"
+        />
+        <UI-Button
+          label="Стать поваром"
+          type="plain"
+          @click="$goToPage('signup')"
+        />
       </div>
     </div>
     <div class="home_block-right">

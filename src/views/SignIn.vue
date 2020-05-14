@@ -1,11 +1,33 @@
 <template>
   <div class="sign_block">
     <div class="sign_block-left">
-      <p class="sign_block-title sign_block-wrapper">Вход</p>
-      <UI-Input class="sign_block-wrapper" placeholder="Имя"/>
-      <UI-Input class="sign_block-wrapper" placeholder="E-mail"/>
-      <UI-Button class="sign_block-wrapper" label="Войти"/>
-      <UI-Button @click="$goToPage('signup')" class="small-button" label="Зарегистрироваться" type="plain"/>
+      <p class="sign_block-title sign_block-wrapper">
+        Вход
+      </p>
+      <UI-Input
+        class="sign_block-wrapper"
+        placeholder="Логин"
+        :variable="form.username"
+        @input="v => form.username = v"
+      />
+      <UI-Input
+        class="sign_block-wrapper"
+        placeholder="Пароль"
+        type="password"
+        :variable="form.password"
+        @input="v => form.password = v"
+      />
+      <UI-Button
+        class="sign_block-wrapper"
+        label="Войти"
+        @click="submitForm"
+      />
+      <UI-Button
+        class="small-button"
+        label="Зарегистрироваться"
+        type="plain"
+        @click="$goToPage('signup')"
+      />
     </div>
     <div class="sign_block-right">
       <Icon class="sign_block-right-icon" />
@@ -21,6 +43,7 @@ import Icon from '@/assets/2.svg'
 import UIButton from '@/components/UI/Button.vue'
 import UIInput from '@/components/UI/Input.vue'
 import NavigationMixin from '@/components/mixins/navigation'
+import { Action } from 'vuex-class'
 
 @Component({
   components: {
@@ -29,7 +52,18 @@ import NavigationMixin from '@/components/mixins/navigation'
     UIInput
   }
 })
-export default class SignIn extends Mixins(NavigationMixin) {}
+export default class SignIn extends Mixins(NavigationMixin) {
+  form = {
+    username: '',
+    password: ''
+  }
+
+  @Action signIn
+
+  submitForm () {
+    this.signIn(this.form)
+  }
+}
 </script>
 
 <style lang="scss">

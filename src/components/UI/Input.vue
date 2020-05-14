@@ -1,6 +1,7 @@
 <template>
   <el-input
     class="ui-input"
+    :value="variable"
     :type="type"
     :disabled="disabled"
     :placeholder="placeholder"
@@ -13,13 +14,14 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class Input extends Vue {
+  @Prop() readonly variable!: unknown
   @Prop({ default: '' }) readonly label!: string
   @Prop({ default: 'text' }) readonly type!: string
   @Prop({ default: false }) readonly disabled!: boolean
   @Prop({ default: '' }) readonly placeholder!: string
 
-  onInput (e: InputEvent) {
-    this.$emit('input', (e.target as HTMLInputElement).value)
+  onInput (e) {
+    this.$emit('input', e)
   }
 }
 </script>
