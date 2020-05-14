@@ -14,7 +14,6 @@ const getFormData = (object) => Object.keys(object).reduce((formData, key) => {
 }, new FormData())
 
 const setToken = (token: string | null) => {
-  console.log(token)
   if (token) {
     instance.defaults.headers.Authorization = `Token ${token}`
   }

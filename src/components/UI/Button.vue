@@ -23,6 +23,7 @@ export default class Button extends Vue {
 
   get buttonTypeClass () {
     if (this.type === 'primary') return 'primary'
+    if (this.type === 'secondary') return 'secondary'
     return 'plain'
   }
 
@@ -54,6 +55,14 @@ export default class Button extends Vue {
     padding: 0 2rem;
     font-size: 0.7rem;
     background-color: $orange;
+  }
+
+  .secondary {
+    min-height: 3rem;
+    padding: 0 3rem;
+    font-size: 0.8rem;
+    background-color: $yellow;
+    color: #000000;
   }
 }
 </style>

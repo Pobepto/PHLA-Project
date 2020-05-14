@@ -7,6 +7,7 @@
         <UI-Button
           class="first_button"
           label="Заказать"
+          @click="$goToPage('order')"
         />
         <UI-Button
           label="Стать поваром"

@@ -3,7 +3,7 @@
     <header class="header_block">
       <span
         class="header_block-logo"
-        @click="$goToPage('Home')"
+        @click="$goToPage('home')"
       >InnoFood</span>
       <div class="header_block-menu">
         <span class="header_block-menu-item">О нас</span>
@@ -11,9 +11,16 @@
         <span class="header_block-menu-item">FAQ</span>
       </div>
       <UI-Button
+        v-if="!token"
         type="plain"
         label="Войти"
         @click="$goToPage('signin')"
+      />
+      <UI-Button
+        v-else
+        type="plain"
+        label="Профиль"
+        @click="$goToPage('profile')"
       />
     </header>
     <router-view />
@@ -25,7 +32,7 @@ import { Component, Mixins } from 'vue-property-decorator'
 
 import NavigationMixin from '@/components/mixins/navigation'
 import { lazyComponent } from '@/router'
-import { Action } from 'vuex-class'
+import { Action, Getter } from 'vuex-class'
 
 @Component({
   components: {
@@ -33,6 +40,8 @@ import { Action } from 'vuex-class'
   }
 })
 export default class App extends Mixins(NavigationMixin) {
+  @Getter token
+
   @Action loadToken
 
   created () {

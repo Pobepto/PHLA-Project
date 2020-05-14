@@ -27,7 +27,11 @@ function initialState () {
 
 const state = initialState()
 
-const getters = {}
+const getters = {
+  token (state) {
+    return state.token
+  }
+}
 
 const mutations = {
   [types.RESET] (state) {
